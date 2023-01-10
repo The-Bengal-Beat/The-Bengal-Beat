@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
@@ -10,6 +10,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         })
     }
 
-    const body = JSON.parse(req.body as string)
-    res.status(200).json({ ...body })
+
+    res.status(200).json(req.body)
 }
