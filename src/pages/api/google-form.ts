@@ -1,5 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-    res.status(200).json({ name: 'John Doe' })
+    if (req.method !== 'POST') {
+        res.status(405).send({ 
+            data: [],
+            errors: [{
+                message: 'Only POST requests allowed'
+            }]
+        })
+    }
+
+    const body = JSON.parse(req.body)
+    res.status(200).json({ ...body })
 }
