@@ -1,7 +1,20 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export interface RequestBody {
-    text: "hello"
+export type ICategory =
+    "Athletics" |
+    "Bengal Buzz" |
+    "Entertainment" |
+    "Gen Z" |
+    "Features & Fashion" |
+    "News in Town" |
+    "Senior Spotlight" |
+    "Nature";
+
+export interface IRequestBody {
+    name: string;
+    title: string;
+    link: string;
+    category: ICategory;
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -9,5 +22,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         res.status(405).send({ message: 'Only POST requests allowed' })
     }
 
-    res.status(200).json(req.body as RequestBody)
+    try {
+        res.status(200).json({ ...req.body as IRequestBody })
+    } catch {
+        res.status(400).send("Incorrect body")
+    }
 }
