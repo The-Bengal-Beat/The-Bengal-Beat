@@ -32,13 +32,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (RequestSchema.safeParse(req.body).success) {
         res.status(200).json({
-            data: [],
+            data: [req.body],
             success: true,
             errors: [],
 
         });
     } else res.status(400).json({
-        data: [req.body],
+        data: [],
         success: false,
         errors: [{
             message: 'Incorrect request pattern'
