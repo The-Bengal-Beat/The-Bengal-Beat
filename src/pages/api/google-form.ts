@@ -32,7 +32,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (RequestSchema.safeParse(req.body).success) {
         res.status(200).json({
-            data: [req.body],
+            data: [],
             success: true,
             errors: [],
 
