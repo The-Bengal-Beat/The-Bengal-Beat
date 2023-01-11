@@ -31,6 +31,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     if (RequestSchema.safeParse(req.body).success) {
+        console.log("Requested")
         res.status(200).json({ 
             data: [],
             success: true,
