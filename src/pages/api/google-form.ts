@@ -1,30 +1,46 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { z } from "zod";
 
-export type ICategory =
-    "Athletics" |
-    "Bengal Buzz" |
-    "Entertainment" |
-    "Gen Z" |
-    "Features & Fashion" |
-    "News in Town" |
-    "Senior Spotlight" |
-    "Nature";
+export const CategoryEnum = [
+    "Athletics", 
+    "Bengal Buzz", 
+    "Entertainment", 
+    "Gen Z", 
+    "Features & Fashion", 
+    "News in Town", 
+    "Senior Spotlight", 
+    "Nature"
+] as const;
 
-export interface IRequestBody {
-    name: string;
-    title: string;
-    link: string;
-    category: ICategory;
-}
+export const RequestSchema = z.object({
+    name: z.string(),
+    title: z.string(),
+    link: z.string(),
+    category: z.enum(CategoryEnum)
+})
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
-        res.status(405).send({ message: 'Only POST requests allowed' })
+        res.status(405).json({ 
+            data: [],
+            success: false,
+            errors: [{
+                message: 'Only POST requests allowed'
+            }]  
+        })
     }
 
-    try {
-        res.status(200).json({ ...req.body as IRequestBody })
-    } catch {
-        res.status(400).send("Incorrect body")
-    }
+    if (RequestSchema.safeParse(req.body).success) {
+        res.status(200).json({ 
+            data: [],
+            success: true,
+            errors: []
+        });
+    } else res.status(400).json({
+        data: [],
+        success: false,
+        errors: [{
+            message: 'Incorrect request pattern'
+        }]
+    })
 }
