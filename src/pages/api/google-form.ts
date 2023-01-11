@@ -38,7 +38,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
         });
     } else res.status(400).json({
-        data: [],
+        data: [req.body],
         success: false,
         errors: [{
             message: 'Incorrect request pattern'
