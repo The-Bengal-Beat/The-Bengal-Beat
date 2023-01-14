@@ -1,12 +1,8 @@
 import { type NextPage } from "next";
 import { readFileSync } from "fs";
+import { IArticle } from "./api/google-form";
 
-const Home: NextPage = () => {
-  const db = readFileSync("src/db/store.json", "utf-8")
-  const articles = JSON.parse(db) as {
-    title: string
-  }[];
-
+const Home: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
   return (
     <>
       Articles:
@@ -16,5 +12,12 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const db = readFileSync("src/db/store.json", "utf-8")
+  const articles = JSON.parse(db)
+
+  return { props: { articles } }
+}
 
 export default Home;
