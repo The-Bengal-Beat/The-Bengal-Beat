@@ -14,7 +14,7 @@ const Home: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
 };
 
 export function getServerSideProps() {
-  const db = readFileSync("db/store.json", "utf-8")
+  const db = readFileSync("db.json", "utf-8")
   const articles = JSON.parse(db) as IArticle[]
 
   return { props: { articles } }
