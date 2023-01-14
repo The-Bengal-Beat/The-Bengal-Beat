@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
-import fs from "fs";
+import { readFileSync } from "fs";
 
 const Home: NextPage = () => {
-  const db = fs.readFileSync("src/db/store.json", "utf-8")
+  const db = readFileSync("src/db/store.json", "utf-8")
   const articles = JSON.parse(db) as {
     title: string
   }[];
