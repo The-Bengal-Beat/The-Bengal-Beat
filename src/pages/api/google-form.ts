@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
-import { readFileSync, writeFileSync } from "fs";
 
 export const CategoryEnum = [
     "Athletics",
@@ -34,13 +33,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     if (RequestSchema.safeParse(req.body).success) {
-        const db = readFileSync("db.json", "utf-8")
-        const articles = JSON.parse(db) as IArticle[];
-        articles.push(req.body as IArticle);
-
-        const articlesAsJson = JSON.stringify(articles);
-        writeFileSync("db.json", articlesAsJson, "utf-8")
-
         res.status(200).json({
             data: [req.body],
             success: true,
