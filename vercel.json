@@ -1,9 +1,6 @@
 {
     "functions": {
-      "api/google-form.ts": {
-        "includeFiles": "db/**"
-      },
-      "api/get-responses.ts": {
+      "src/pages/api/**.ts": {
         "includeFiles": "db/**"
       }
     }
