@@ -34,12 +34,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     if (RequestSchema.safeParse(req.body).success) {
-        const db = readFileSync("public/db/store.json", "utf-8")
+        const db = readFileSync("db/store.json", "utf-8")
         const articles = JSON.parse(db) as IArticle[];
         articles.push(req.body as IArticle);
 
         const articlesAsJson = JSON.stringify(articles);
-        writeFileSync("public/db/store.json", articlesAsJson, "utf-8")
+        writeFileSync("db/store.json", articlesAsJson, "utf-8")
 
         res.status(200).json({
             data: [req.body],
