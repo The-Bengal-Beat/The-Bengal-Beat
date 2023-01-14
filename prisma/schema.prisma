@@ -16,5 +16,4 @@ model Article {
   title String
   link String
   category String
-
 }
