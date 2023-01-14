@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
+import fs from "fs";
+import path from "path";
 
 export const CategoryEnum = [
     "Athletics",
@@ -19,6 +21,8 @@ export const RequestSchema = z.object({
     category: z.enum(CategoryEnum)
 })
 
+export type IArticle = z.infer<typeof RequestSchema>;
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
         res.status(405).json({
@@ -31,6 +35,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     if (RequestSchema.safeParse(req.body).success) {
+        const db = fs.readFileSync(path.resolve(__dirname, "src/db/store.json"), "utf-8")
+        const articles = JSON.parse(db) as IArticle[];
+        articles.push(req.body as IArticle);
+
+        const articlesAsJson = JSON.stringify(articles);
+        fs.writeFileSync(path.resolve(__dirname, "src/db/store.json"), articlesAsJson, "utf-8")
+
         res.status(200).json({
             data: [req.body],
             success: true,
