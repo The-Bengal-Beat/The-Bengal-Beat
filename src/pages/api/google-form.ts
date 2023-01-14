@@ -23,7 +23,7 @@ export const RequestSchema = z.object({
 
 export type IArticle = z.infer<typeof RequestSchema>;
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
         res.status(405).json({
             data: [],
@@ -37,7 +37,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (RequestSchema.safeParse(req.body).success) {
         try {
             const prisma = new PrismaClient()
-            prisma.article.create({ data: req.body })
+            await prisma.article.create({ data: req.body as IArticle })
             
             res.status(200).json({
                 data: [req.body],
