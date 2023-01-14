@@ -1,0 +1,10 @@
+{
+    "functions": {
+      "api/google-form.ts": {
+        "includeFiles": "db/**"
+      },
+      "api/get-responses.ts": {
+        "includeFiles": "db/**"
+      }
+    }
+  }
