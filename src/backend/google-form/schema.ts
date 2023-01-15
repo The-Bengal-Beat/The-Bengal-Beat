@@ -15,6 +15,6 @@ export const CategoryEnum = [
 export const RequestSchema = z.object({
     name: z.string(),
     title: z.string(),
-    link: z.string(),
+    text: z.string(),
     category: z.enum(CategoryEnum).default("")
 })
