@@ -10,7 +10,7 @@ const onClick = ([_, setState]: State<{ data: string, error: string }>) => {
       setState({ data: JSON.stringify(response.data), error: "" })
     })
     .catch(err => {
-      setState({ data: "", error: err})
+      setState({ data: "", error: JSON.stringify(err) })
     })
 }
 
