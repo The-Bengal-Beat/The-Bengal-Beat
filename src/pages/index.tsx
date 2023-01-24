@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { useState } from "react";
 import type { NextPage } from "next";
-import type { State } from "../types";
+import type { IPostFromApi, State } from "../types";
 import axios from "axios";
 
 const onClick = ([_, setState]: State<{ data: string, error: string }>) => {
   axios.get("https://thebengalbeat.com/wp-json/wp/v2/posts")
     .then(response => {
-      setState({ data: JSON.stringify(response.data), error: "" })
+      setState({ data: JSON.stringify(response.data as IPostFromApi[]), error: "" })
     })
     .catch(err => {
       setState({ data: "", error: JSON.stringify(err) })
