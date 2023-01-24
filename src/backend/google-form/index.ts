@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
-import { NextApiRequest, NextApiResponse } from "next";
 import { RequestSchema } from "./schema";
-import { IArticle } from "./types";
+import type { NextApiRequest, NextApiResponse } from "next";
+import type { IArticle } from "./types";
 
 export const GoogleFormApi = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'POST') {
