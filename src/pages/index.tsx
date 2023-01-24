@@ -3,14 +3,14 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import type { IPostFromApi, State } from "../types";
 import axios from "axios";
-import { getDataFromApi } from "../utils/getDataFromApi";
+import { getDataFromApi, IApiOutput } from "../utils/getDataFromApi";
 
 const onClick = ([_, setState]: State<{ data: IPostFromApi[], error: string }>) => {
-  getDataFromApi().then(data => setState(data));
+  
 }
 
 const Home: NextPage = () => {
-  const [state, setState] = useState({ data: [], error: "" })
+  const [state, setState] = useState<IApiOutput>({ data: [], error: "" })
   
   return (
     <>
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       </Head>
       <p>Data: {JSON.stringify(state.data)}</p>
       <p>Errors: {state.error}</p>
-      <button onClick={() => onClick([state, setState])}>Get Values</button>
+      <button onClick={() => getDataFromApi().then(data => setState(data))}>Get Values</button>
     </>
   );
 };

@@ -2,12 +2,12 @@ import axios from "axios";
 import { PostArrayFromApiSchema } from "../schemas";
 import type { IPostFromApi } from "../types";
 
-interface IOutput {
+export interface IApiOutput {
     data: IPostFromApi[],
     error: string
 }
 
-export const getDataFromApi = async (): Promise<IOutput> => {
+export const getDataFromApi = async (): Promise<IApiOutput> => {
     const response = await axios.get("https://thebengalbeat.com/wp-json/wp/v2/posts")
     
     // parsing
