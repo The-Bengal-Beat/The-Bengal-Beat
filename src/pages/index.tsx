@@ -2,12 +2,15 @@ import Head from "next/head";
 import { useState } from "react";
 import type { NextPage } from "next";
 import type { State } from "../types";
+import axios from "axios";
 
 const onClick = ([_, setState]: State<string>) => {
-  const json = fetch("https://the-bengal-beat.vercel.app/api/responses")
-    .then(response => response.json())
-  setState(JSON.stringify(json))
-  return;
+  axios.get("https://the-bengal-beat.vercel.app/api/responses")
+    .then(response => {
+      setState(JSON.stringify(response.data))
+    })
+  
+  
 }
 
 const Home: NextPage = () => {
