@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import type { State } from "../types";
 
 const onClick = ([_, setState]: State<string>) => {
-  const json = fetch("https://thebengalbeat.com/wp-json/wp/v2/posts")
+  const json = fetch("https://the-bengal-beat.vercel.app/api/responses")
     .then(response => response.json())
   setState(JSON.stringify(json))
   return;
