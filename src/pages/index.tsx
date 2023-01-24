@@ -22,8 +22,8 @@ const Home: NextPage = () => {
       <Head>
         <title>Home Page</title>
       </Head>
-      <p>{state.data}</p>
-      <p>{state.error}</p>
+      <p>Data: {state.data}</p>
+      <p>Errors: {state.error}</p>
       <button onClick={() => onClick([state, setState])}>Get Values</button>
     </>
   );
