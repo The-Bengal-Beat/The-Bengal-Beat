@@ -9,8 +9,9 @@ const onClick = ([_, setState]: State<string>) => {
     .then(response => {
       setState(JSON.stringify(response.data))
     })
-  
-  
+    .catch(err => {
+      console.error(err)
+    })
 }
 
 const Home: NextPage = () => {
