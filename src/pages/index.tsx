@@ -14,7 +14,9 @@ const Home: NextPage = () => {
   
   return (
     <>
-      {posts.data.map(post => <Post data={post} key={post.id} />)}
+      <div className="flex flex-col w-full h-full">
+        {posts.data.map(post => <Post data={post} key={post.id} />)}
+      </div>
       <p>Errors: {posts.error}</p>
     </>
   );
