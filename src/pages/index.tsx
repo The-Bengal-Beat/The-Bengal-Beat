@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { getDataFromApi, IApiOutput } from "../utils/getDataFromApi";
@@ -15,7 +14,7 @@ const Home: NextPage = () => {
   
   return (
     <>
-      {posts.data.map(post => <Post data={post} />)}
+      {posts.data.map(post => <Post data={post} key={post.id} />)}
       <p>Errors: {posts.error}</p>
     </>
   );
