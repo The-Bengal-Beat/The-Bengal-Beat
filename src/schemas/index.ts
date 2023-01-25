@@ -9,6 +9,9 @@ export const PostFromApiSchema = z.object({
     status: z.enum(StatusEnum),
     content: z.object({
         rendered: z.string()
+    }),
+    title: z.object({
+        rendered: z.string()
     })
 })
 export const PostArrayFromApiSchema = z.array(PostFromApiSchema)
