@@ -11,7 +11,7 @@ export const getDataFromApi = async () => {
     const response = await axios.get("https://thebengalbeat.com/wp-json/wp/v2/posts")
     
     // parsing
-    const parsed = PostArrayFromApiSchema.safeParse(response)
+    const parsed = PostArrayFromApiSchema.safeParse(response.data)
     if (parsed.success) {
         return  {
             data: parsed.data,
