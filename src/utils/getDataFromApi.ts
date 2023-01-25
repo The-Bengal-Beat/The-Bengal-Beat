@@ -7,7 +7,7 @@ export interface IApiOutput {
     error: string
 }
 
-export const getDataFromApi = async (): Promise<IApiOutput> => {
+export const getDataFromApi = async () => {
     const response = await axios.get("https://thebengalbeat.com/wp-json/wp/v2/posts")
     
     // parsing
