@@ -6,6 +6,7 @@ interface IPostProps {
 }
 
 const Post: FC<IPostProps> = ({ data }) => {
+  
   return (
     <div className="flex w-[300px] h-[500px]">
         <h3>{data.title.rendered}</h3>
