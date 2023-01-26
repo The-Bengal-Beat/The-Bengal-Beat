@@ -7,7 +7,7 @@ interface IPostRow {
 
 const PostRow: React.FC<IPostRow> = ({ post }) => {
   return (
-    <div className="w-full h-50px p-2 m-4 bg-[#363636]">
+    <div className="flex flex-col w-full h-50px p-2 m-4 bg-[#363636]">
         <div className="">
             <p className="text-white text-4">F. Last Name</p>
             <p className="text-white text-4">Title of the Article</p>
