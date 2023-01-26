@@ -9,7 +9,7 @@ export interface IApiOutput {
 }
 
 export const getDataFromApi = async () => {
-    const response = await axios.get("https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=100")
+    const response = await axios.get("https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=20")
     
     // parsing
     const parsed = PostArrayFromApiSchema.safeParse(response.data)
