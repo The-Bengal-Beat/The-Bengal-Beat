@@ -2,7 +2,7 @@ import React from 'react'
 import { IPostFromApi } from '../../types'
 
 interface IPostRow {
-    data: IPostFromApi
+    data: IPostFromApi;
 }
 
 const PostRow: React.FC<IPostRow> = ({ data }) => {

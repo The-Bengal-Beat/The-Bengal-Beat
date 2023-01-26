@@ -1,10 +1,11 @@
 import axios from "axios";
 import { PostArrayFromApiSchema } from "../schemas";
-import type { IPostFromApi } from "../types";
+import type { IHeaders, IPostFromApi } from "../types";
 
 export interface IApiOutput {
-    data: IPostFromApi[],
-    error: string
+    data: IPostFromApi[];
+    headers?: IHeaders;
+    error: string;
 }
 
 export const getDataFromApi = async () => {
@@ -15,6 +16,7 @@ export const getDataFromApi = async () => {
     if (parsed.success) {
         return  {
             data: parsed.data,
+            headers: response.headers,
             error: "",
         }
     } else return {
