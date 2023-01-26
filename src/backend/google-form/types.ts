@@ -1,4 +1,4 @@
-import { z } from "zod";
-import { RequestSchema } from "./schema";
+import type { z } from "zod";
+import type { RequestSchema } from "./schema";
 
 export type IArticle = z.infer<typeof RequestSchema>
