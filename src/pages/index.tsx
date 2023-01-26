@@ -4,7 +4,7 @@ import { getDataFromApi, IApiOutput } from "../utils/getDataFromApi";
 import PostGroup from "../components/PostGroup/PostGroup";
 
 const Home: NextPage = () => {
-  const [state, setState] = useState<IApiOutput>({ data: [], error: "" })
+  const [state, setState] = useState<IApiOutput>({ posts: [], error: "" })
 
   useEffect(() => {
     getDataFromApi()
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-      <PostGroup posts={state.data} />
+      <PostGroup data={state} />
   );
 };
 
