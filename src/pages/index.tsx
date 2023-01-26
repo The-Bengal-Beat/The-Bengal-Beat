@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   }, [])
   
   return (
-      <div className="flex flex-row flex-wrap w-full h-full">
+      <div className="grid grid-cols-1 gap-y-px flex-wrap w-full h-full m-4">
         {posts.data.map(post => <PostRow data={post} key={post.id} />)}
       </div>
   );
