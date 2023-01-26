@@ -15,6 +15,7 @@ const Home: NextPage = () => {
   
   return (
       <div className="grid grid-cols-1 gap-y-px flex-wrap w-full h-full p-4">
+        <p>{posts.headers['X-WP-Total']}</p>
         {posts.data.map(post => <PostRow data={post} key={post.id} />)}
       </div>
   );
