@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   }, [])
   
   return (
-      <div className="flex flex-row w-full h-full">
+      <div className="flex flex-row flex-wrap w-full h-full">
         {posts.data.map(post => <Post data={post} key={post.id} />)}
       </div>
   );
