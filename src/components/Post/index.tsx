@@ -7,10 +7,10 @@ interface IPostProps {
 
 const Post = ({ data }: IPostProps) => {
   return (
-    <div className="flex flex-col w-[300px] h-[500px]">
+    <div className="flex flex-col w-[300px] h-[500px] bg-slate-300 m-2">
         <h3 
           dangerouslySetInnerHTML={{ __html: data.title.rendered }} 
-          className="overflow-none" 
+          className="overflow-hidden overflow-ellipsis whitespace-nowrap" 
         />
         <div
           dangerouslySetInnerHTML={{ __html: data.content.rendered }} 
