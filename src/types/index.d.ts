@@ -1,3 +1,4 @@
+import { AxiosResponseHeaders } from "axios";
 import type { Dispatch, SetStateAction } from "react";
 import { z } from "zod";
 import { PostFromApiSchema } from "../schemas";

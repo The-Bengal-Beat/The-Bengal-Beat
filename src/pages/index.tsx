@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { getDataFromApi, IApiOutput } from "../utils/getDataFromApi";
-import PostCard from "../components/PostCard/PostCard";
 import PostRow from "../components/PostRow/PostRow";
 
 const Home: NextPage = () => {
@@ -15,7 +14,7 @@ const Home: NextPage = () => {
   
   return (
       <div className="grid grid-cols-1 gap-y-px flex-wrap w-full h-full p-4">
-        <p>{posts.headers['X-WP-Total']}</p>
+        {posts.headers && <p>posts.headers['X-WP-Total']</p>}
         {posts.data.map(post => <PostRow data={post} key={post.id} />)}
       </div>
   );
