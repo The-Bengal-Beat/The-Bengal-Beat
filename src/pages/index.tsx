@@ -15,8 +15,7 @@ const Home: NextPage = () => {
   
   return (
       <div className="flex flex-row flex-wrap w-full h-full">
-        <PostRow />
-        {/* {posts.data.map(post => <PostCard data={post} key={post.id} />)} */}
+        {posts.data.map(post => <PostRow data={post} key={post.id} />)}
       </div>
   );
 };
