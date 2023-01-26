@@ -1,0 +1,18 @@
+import React from 'react'
+import { IPostFromApi } from '../../types'
+
+interface IPostRow {
+    post?: IPostFromApi
+}
+
+const PostRow: React.FC<IPostRow> = ({ post }) => {
+  return (
+    <div className="w-full h-50px p-2 m-4 bg-[#363636]">
+        <p className="">F. Last Name</p>
+        <p>Title of the Article</p>
+        <p>1/26/23</p>
+    </div>
+  )
+}
+
+export default PostRow

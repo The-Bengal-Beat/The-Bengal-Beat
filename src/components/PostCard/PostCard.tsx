@@ -5,7 +5,7 @@ interface IPostProps {
     data: IPostFromApi;
 }
 
-const Post = ({ data }: IPostProps) => {
+const PostCard = ({ data }: IPostProps) => {
   return (
     <div className="flex flex-col w-[300px] h-[500px] bg-slate-300 m-2">
         <h3 
@@ -20,4 +20,4 @@ const Post = ({ data }: IPostProps) => {
   )
 }
 
-export default Post
+export default PostCard

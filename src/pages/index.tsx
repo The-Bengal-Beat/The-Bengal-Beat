@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { getDataFromApi, IApiOutput } from "../utils/getDataFromApi";
-import Post from "../components/Post";
+import PostCard from "../components/PostCard/PostCard";
+import PostRow from "../components/PostRow/PostRow";
 
 const Home: NextPage = () => {
   const [posts, setPosts] = useState<IApiOutput>({ data: [], error: "" })
@@ -14,7 +15,8 @@ const Home: NextPage = () => {
   
   return (
       <div className="flex flex-row flex-wrap w-full h-full">
-        {posts.data.map(post => <Post data={post} key={post.id} />)}
+        <PostRow />
+        {/* {posts.data.map(post => <PostCard data={post} key={post.id} />)} */}
       </div>
   );
 };
