@@ -14,7 +14,7 @@ export const PostFromApiSchema = z.object({
         rendered: z.string()
     }),
     custom_fields: z.object({
-        writer: z.array(z.string())
+        writer: z.array(z.string()).optional()
     })
 })
 export const PostArrayFromApiSchema = z.array(PostFromApiSchema)
