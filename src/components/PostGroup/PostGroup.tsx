@@ -5,14 +5,14 @@ import PostRow from '../PostRow/PostRow'
 const PostGroup: React.FC = () => {
   const [page, setPage] = useState<number>(1)
   const [state, setState] = useState<IApiOutput>({ posts: [], error: "" })
-  const [totalPages, setTotalPages] = useState<string | undefined>("0")
+  const [totalPages, setTotalPages] = useState<number>(0)
 
   useEffect(() => {
     getDataFromApi(page)
       .then(data => {
         setState(data)
 
-        const total = data.headers?.['X-WP-Total']
+        const total = Number(data.headers?.['x-wp-total'] ?? "")
         setTotalPages(total) 
       })
       .catch(err => console.log(err))
