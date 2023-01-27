@@ -8,8 +8,8 @@ export interface IApiOutput {
     error: string;
 }
 
-export const getDataFromApi = async (): Promise<IApiOutput> => {
-    const response = await axios.get("https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=20")
+export const getDataFromApi = async (page: number = 1): Promise<IApiOutput> => {
+    const response = await axios.get(`https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=20?page=${page}`)
     
     // parsing
     const parsed = PostArrayFromApiSchema.safeParse(response.data)
