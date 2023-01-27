@@ -12,7 +12,7 @@ const PostGroup: React.FC = () => {
       .then(data => {
         setState(data)
 
-        const total = parseInt(data.headers?.['X-WP-Total'] ?? "")
+        const total = Number(data.headers?.['X-WP-Total'] ?? "")
         setTotalPosts(total) 
       })
       .catch(err => console.log(err))
