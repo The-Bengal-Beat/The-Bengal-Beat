@@ -12,8 +12,8 @@ const PostGroup: React.FC = () => {
       .then(data => {
         setState(data)
 
-        const total = Number(data.headers?.['x-wp-total'] ?? "")
-        setTotalPages(total) 
+        const totalPosts = Number(data.headers?.['x-wp-total'] ?? "")
+        setTotalPages(totalPosts / 20) 
       })
       .catch(err => console.log(err))
   }, [page])
