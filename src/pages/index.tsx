@@ -4,11 +4,7 @@ import { getDataFromApi, IApiOutput } from "../utils/getDataFromApi";
 import PostGroup from "../components/PostGroup/PostGroup";
 
 const Home: NextPage = () => {
-  
-
-  return (
-      <PostGroup />
-  );
+  return <PostGroup />
 };
 
 export default Home;
