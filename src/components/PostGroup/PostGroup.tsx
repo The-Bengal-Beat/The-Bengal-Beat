@@ -20,9 +20,10 @@ const PostGroup: React.FC = () => {
   }, [page])
 
   return (
-    <div className="grid grid-cols-1 justify-center gap-y-px flex-wrap w-full h-full p-4">
+    <div className="grid grid-cols-1 gap-y-px flex-wrap w-full h-full p-4">
       {state.posts.map(post => <PostRow data={post} key={post.id} />)}
       <Pagination 
+        className="justify-self-center"
         count={totalPages} 
         onChange={(_: ChangeEvent<unknown>, value: number) => setPage(value)} />
     </div>
