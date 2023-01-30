@@ -6,7 +6,7 @@ export const PostForm = () => {
   const { control } = useForm();
 
   return (
-    <div className="m-4 w-full flex flex-row justify-start">
+    <div className="p-4 w-full flex flex-row justify-start">
       <Controller
         name="writer"
         control={control}
@@ -25,7 +25,7 @@ export const PostForm = () => {
         name="category"
         control={control}
         render={({ field }) => (
-          <FormControl className="w-[200px] mx-2 y-4">
+          <FormControl className="w-[200px] mx-2 my-4">
             <InputLabel id="category-input">Category</InputLabel>
             <Select labelId="category-input" label="Category" {...field}>
               <MenuItem value="Category One">Category One</MenuItem>
