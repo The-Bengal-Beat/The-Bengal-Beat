@@ -23,7 +23,7 @@ const PostTable: React.FC = () => {
     }, [page])
 
     return (
-        <Paper className="flex flex-col align-center">
+        <Paper className="flex flex-col items-center">
             <TableContainer component={Paper}>
                 <Table aria-label="Post Table">
                     <TableHead>
