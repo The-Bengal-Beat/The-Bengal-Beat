@@ -6,27 +6,21 @@ import PostTableRow from './PostTableRow'
 
 const PostTable: React.FC = () => {
     const [data, setData] = useState<IApiOutput>({ posts: [], error: "" })
-    const [rowsPerPage, setRowsPerPage] = useState<number>(10)
     const [page, setPage] = useState<number>(1)
 
     const handlePageChange = (event: unknown, newPage: number) => {
         setPage(newPage)
     }
 
-    const handleRowsPerPageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setRowsPerPage(+event.target.value)
-        setPage(0)
-    }
-
     useEffect(() => {
-        getDataFromApi(page, rowsPerPage)
+        getDataFromApi(page)
             .then(data => {
                 setData(data)
             })
             .catch(err => {
                 console.error(err)
             })
-    }, [page, rowsPerPage])
+    }, [page])
 
     return (
         <Paper>
@@ -46,12 +40,10 @@ const PostTable: React.FC = () => {
                 </Table>
             </TableContainer>
             <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
                 component="div"
                 count={Number(data.headers?.["x-wp-total"])}
-                rowsPerPage={rowsPerPage}
+                rowsPerPage={10}
                 page={page}
-                onRowsPerPageChange={handleRowsPerPageChange}
                 onPageChange={handlePageChange}
             />
         </Paper>
