@@ -6,7 +6,7 @@ export const PostForm = () => {
   const { control } = useForm();
 
   return (
-    <div className="m-4 flex flex-row justify-start">
+    <div className="m-4 w-full flex flex-row justify-start">
       <Controller
         name="writer"
         control={control}
