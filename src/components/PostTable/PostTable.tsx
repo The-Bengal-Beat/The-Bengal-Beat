@@ -7,7 +7,7 @@ import PostTableRow from './PostTableRow'
 const PostTable: React.FC = () => {
     const [data, setData] = useState<IApiOutput>({ posts: [], error: "" })
     const [rowsPerPage, setRowsPerPage] = useState<number>(10)
-    const [page, setPage] = useState<number>(0)
+    const [page, setPage] = useState<number>(1)
 
     const handlePageChange = (event: unknown, newPage: number) => {
         setPage(newPage)
