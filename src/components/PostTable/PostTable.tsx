@@ -40,7 +40,7 @@ const PostTable: React.FC = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.posts?.map(post => <PostTableRow {...post} />)}
+                        {data.posts?.map(post => <PostTableRow key={post.id} {...post} />)}
                     </TableBody>
                 </Table>
             </TableContainer>
