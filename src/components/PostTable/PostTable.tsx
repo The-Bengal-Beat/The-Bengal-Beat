@@ -1,8 +1,9 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, Pagination } from '@mui/material'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, Pagination, Select } from '@mui/material'
 import { getDataFromApi } from '../../utils/getDataFromApi'
 import type { IApiOutput } from '../../utils/getDataFromApi'
 import React, { useEffect, useState } from 'react'
 import PostTableRow from './PostTableRow'
+import { PostForm } from './PostForm'
 
 const PostTable: React.FC = () => {
     const [data, setData] = useState<IApiOutput>({ posts: [], error: "" })
@@ -24,6 +25,7 @@ const PostTable: React.FC = () => {
 
     return (
         <Paper className="flex flex-col items-center">
+            <PostForm />
             <TableContainer component={Paper}>
                 <Table aria-label="Post Table">
                     <TableHead>
