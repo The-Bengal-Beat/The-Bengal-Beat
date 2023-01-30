@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination } from '@mui/material'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, Pagination } from '@mui/material'
 import { getDataFromApi } from '../../utils/getDataFromApi'
 import type { IApiOutput } from '../../utils/getDataFromApi'
 import React, { useEffect, useState } from 'react'
@@ -39,12 +39,12 @@ const PostTable: React.FC = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <TablePagination
-                component="div"
-                count={Number(data.headers?.["x-wp-total"])}
-                rowsPerPage={10}
+            <Pagination
+                variant="outlined"
+                shape="rounded"
+                count={Number(data.headers?.["x-wp-totalpages"])}
                 page={page}
-                onPageChange={handlePageChange}
+                onChange={handlePageChange}
             />
         </Paper>
 
