@@ -6,12 +6,12 @@ export const PostForm = () => {
   const { control } = useForm()
 
   return (
-    <div className="m-4 flex flex-row justify-start">
+    <div className="m-4 flex flex-row items-start">
       <Controller
         name="writer"
         control={control}
         render={({ field }) => (
-          <Select {...field}>
+          <Select label="Writer" {...field}>
             <MenuItem value="Writer One">Writer One</MenuItem>
             <MenuItem value="Writer Two">Writer Two</MenuItem>
             <MenuItem value="Writer Three">Writer Three</MenuItem>
@@ -22,7 +22,7 @@ export const PostForm = () => {
         name="category"
         control={control}
         render={({ field }) => (
-          <Select {...field}>
+          <Select label="Category" {...field}>
             <MenuItem value="Category One">Category One</MenuItem>
             <MenuItem value="Category Two">Category Two</MenuItem>
             <MenuItem value="Category Three">Category Three</MenuItem>
