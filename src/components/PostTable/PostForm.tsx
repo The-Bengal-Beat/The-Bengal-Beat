@@ -1,4 +1,4 @@
-import { InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
@@ -11,28 +11,28 @@ export const PostForm = () => {
         name="writer"
         control={control}
         render={({ field }) => (
-          <>
+          <FormControl fullWidth>
             <InputLabel id="writer-input">Writer</InputLabel>
             <Select labelId="writer-input" label="Writer" {...field}>
               <MenuItem value="Writer One">Writer One</MenuItem>
               <MenuItem value="Writer Two">Writer Two</MenuItem>
               <MenuItem value="Writer Three">Writer Three</MenuItem>
             </Select>
-          </>
+          </FormControl>
         )}
       />
       <Controller
         name="category"
         control={control}
         render={({ field }) => (
-          <>
+          <FormControl fullWidth>
             <InputLabel id="category-input">Category</InputLabel>
             <Select labelId="category-input" label="Category" {...field}>
               <MenuItem value="Category One">Category One</MenuItem>
               <MenuItem value="Category Two">Category Two</MenuItem>
               <MenuItem value="Category Three">Category Three</MenuItem>
             </Select>
-          </>
+          </FormControl>
         )}
       />
     </div>
