@@ -30,6 +30,7 @@ const PostTable: React.FC = () => {
 
     return (
         <Paper>
+            <p>{JSON.stringify(data)}</p>
             <TableContainer component={Paper}>
                 <Table aria-label="Post Table">
                     <TableHead>
