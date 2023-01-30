@@ -23,7 +23,7 @@ const PostTable: React.FC = () => {
     }, [page])
 
     return (
-        <Paper className="flex justify-center">
+        <Paper className="flex flex-col justify-center">
             <TableContainer component={Paper}>
                 <Table aria-label="Post Table">
                     <TableHead>
@@ -41,7 +41,7 @@ const PostTable: React.FC = () => {
             </TableContainer>
             <Pagination
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 count={Number(data.headers?.["x-wp-totalpages"])}
                 page={page}
                 onChange={handlePageChange}
