@@ -1,5 +1,6 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination } from '@mui/material'
-import { getDataFromApi, IApiOutput } from '../../utils/getDataFromApi'
+import { getDataFromApi } from '../../utils/getDataFromApi'
+import type { IApiOutput } from '../../utils/getDataFromApi'
 import React, { useEffect, useState } from 'react'
 import PostTableRow from './PostTableRow'
 

@@ -1,6 +1,6 @@
 import { TableCell, TableRow } from '@mui/material'
+import type { IPostFromApi } from '../../types'
 import React from 'react'
-import { IPostFromApi } from '../../types'
 
 const PostTableRow: React.FC<IPostFromApi> = ({ ...post }) => {
     const date = new Date(post.date_gmt)
