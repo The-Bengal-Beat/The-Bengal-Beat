@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { type AppType } from "next/dist/shared/lib/utils";
 import "../styles/globals.css";
 
@@ -11,6 +11,7 @@ const darkTheme = createTheme({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <Component {...pageProps} />
     </ThemeProvider>
   );
