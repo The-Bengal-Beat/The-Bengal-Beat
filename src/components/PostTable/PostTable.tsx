@@ -45,6 +45,7 @@ const PostTable: React.FC = () => {
                 count={Number(data.headers?.["x-wp-totalpages"])}
                 page={page}
                 onChange={handlePageChange}
+                className="my-4"
             />
         </Paper>
 
