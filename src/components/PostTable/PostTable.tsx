@@ -24,7 +24,7 @@ const PostTable: React.FC = () => {
                 setData(data)
             })
             .catch(err => {
-                console.log(err)
+                console.error(err)
             })
     }, [page, rowsPerPage])
 
@@ -48,7 +48,7 @@ const PostTable: React.FC = () => {
             <TablePagination
                 rowsPerPageOptions={[10, 25, 100]}
                 component="div"
-                count={data.posts.length}
+                count={Number(data.headers?.["x-wp-total"])}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onRowsPerPageChange={handleRowsPerPageChange}
