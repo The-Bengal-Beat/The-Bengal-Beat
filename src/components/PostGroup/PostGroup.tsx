@@ -9,7 +9,7 @@ const PostGroup: React.FC = () => {
   const [totalPages, setTotalPages] = useState<number>(0)
 
   useEffect(() => {
-    getDataFromApi(page)
+    getDataFromApi(page, 20)
       .then(data => {
         setState(data)
 
