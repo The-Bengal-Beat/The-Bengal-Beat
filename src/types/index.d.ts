@@ -1,7 +1,7 @@
-import { AxiosResponseHeaders } from "axios";
+import type { AxiosResponseHeaders } from "axios";
 import type { Dispatch, SetStateAction } from "react";
-import { z } from "zod";
-import { PostFromApiSchema } from "../schemas";
+import type { z } from "zod";
+import type { PostFromApiSchema } from "../schemas";
 
 export type State<T> = [T, Dispatch<SetStateAction<T>>]
 export type IPostFromApi = z.infer<typeof PostFromApiSchema>
