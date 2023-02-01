@@ -1,57 +1,68 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, Pagination, Select } from '@mui/material'
-import { getDataFromApi } from '../../utils/getDataFromApi'
-import type { IApiOutput } from '../../utils/getDataFromApi'
-import React, { useEffect, useState } from 'react'
-import PostTableRow from './PostTableRow'
-import { PostForm } from './PostForm'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Pagination,
+} from "@mui/material";
+import { getPosts } from "../../utils/getPosts";
+import React, { useEffect, useState } from "react";
+import PostTableRow from "./PostTableRow";
+import { PostForm } from "./PostForm";
+
+import type { IGetPostsResponse } from "../../utils/getPosts";
 
 const PostTable: React.FC = () => {
-    const [data, setData] = useState<IApiOutput>({ posts: [], error: "" })
-    const [page, setPage] = useState<number>(1)
+  const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
+  const [page, setPage] = useState<number>(1);
 
-    const handlePageChange = (event: unknown, newPage: number) => {
-        setPage(newPage)
-    }
+  const handlePageChange = (_: unknown, newPage: number) => {
+    setPage(newPage);
+  };
 
-    useEffect(() => {
-        getDataFromApi(page)
-            .then(data => {
-                setData(data)
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    }, [page])
+  useEffect(() => {
+    getPosts(page)
+      .then((data) => {
+        setData(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [page]);
 
-    return (
-        <Paper className="flex flex-col items-center">
-            <PostForm />
-            <TableContainer component={Paper}>
-                <Table aria-label="Post Table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Writer</TableCell>
-                            <TableCell>Title</TableCell>
-                            <TableCell>Status</TableCell>
-                            <TableCell>Date Published</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {data.posts?.map(post => <PostTableRow key={post.id} {...post} />)}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <Pagination
-                variant="outlined"
-                color="primary"
-                count={Number(data.headers?.["x-wp-totalpages"])}
-                page={page}
-                onChange={handlePageChange}
-                className="my-4"
-            />
-        </Paper>
+  return (
+    <Paper className="flex flex-col items-center">
+      <PostForm />
+      <TableContainer component={Paper}>
+        <Table aria-label="Post Table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Writer</TableCell>
+              <TableCell>Title</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Date Published</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.data?.map((post) => (
+              <PostTableRow key={post.id} {...post} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Pagination
+        variant="outlined"
+        color="primary"
+        count={Number(data.headers?.["x-wp-totalpages"])}
+        page={page}
+        onChange={handlePageChange}
+        className="my-4"
+      />
+    </Paper>
+  );
+};
 
-    )
-}
-
-export default PostTable
+export default PostTable;

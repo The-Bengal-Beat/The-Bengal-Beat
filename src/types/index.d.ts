@@ -9,3 +9,8 @@ export type IHeaders = AxiosResponseHeaders | Partial<Record<string, string> & {
     "set-cookie"?: string[] | undefined;
     "X-WP-Total"?: string
 }>
+export type IApiOutput<T> = {
+    data: T;
+    headers?: IHeaders;
+    error: string;
+}
