@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { getCategories } from "../../utils/getCategories";
 import type { IGetCategoriesResponse } from "../../utils/getCategories";
+import { parseHTML } from "../../utils/parseHTML";
 
 export const PostForm = () => {
   const { control, watch } = useForm();
@@ -48,8 +49,9 @@ export const PostForm = () => {
                   <MenuItem
                     key={category.id}
                     value={category.name}
-                    dangerouslySetInnerHTML={{ __html: category.name }}
-                  />
+                  >
+                    {parseHTML(category.name)}
+                  </MenuItem>
                 );
               })}
             </Select>
