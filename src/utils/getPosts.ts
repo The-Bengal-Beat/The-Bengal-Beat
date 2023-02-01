@@ -3,9 +3,15 @@ import { PostArraySchema } from "../schemas";
 import type { IApiOutput, IPost } from "../types";
 
 export type IGetPostsResponse = IApiOutput<IPost[]>
+export type IGetPostsProps = {
+    page?: number;
+    per_page?: number;
+    category?: string;
+}
 
-export const getPosts = async (page = 1, perPage = 10): Promise<IGetPostsResponse> => {
-    const response = await axios.get(`https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=${perPage}&page=${page}`)
+export const getPosts = async ({page = 1, per_page = 10, category = ""}: IGetPostsProps): Promise<IGetPostsResponse> => {
+    const url = `https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=${per_page}&page=${page}&categories=${category}`
+    const response = await axios.get(url)
     
     // parsing
     const parsed = PostArraySchema.safeParse(response.data)

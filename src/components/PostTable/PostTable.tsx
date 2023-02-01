@@ -12,26 +12,29 @@ import { getPosts } from "../../utils/getPosts";
 import React, { useEffect, useState } from "react";
 import PostTableRow from "./PostTableRow";
 import { PostForm } from "./PostForm";
-
+import { useForm } from "react-hook-form";
 import type { IGetPostsResponse } from "../../utils/getPosts";
 
 const PostTable: React.FC = () => {
+  const { control, watch } = useForm()
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
   const [page, setPage] = useState<number>(1);
+
+  const category = watch("category");
 
   const handlePageChange = (_: unknown, newPage: number) => {
     setPage(newPage);
   };
 
   useEffect(() => {
-    getPosts(page)
+    getPosts({ page, category })
       .then((data) => setData(data))
       .catch((err) => console.error(err));
-  }, [page]);
+  }, [page, category]);
 
   return (
     <Paper className="flex flex-col items-center">
-      <PostForm />
+      <PostForm control={control} />
       <TableContainer component={Paper}>
         <Table aria-label="Post Table">
           <TableHead>

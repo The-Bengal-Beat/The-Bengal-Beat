@@ -1,18 +1,19 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, Control } from "react-hook-form";
 import { getCategories } from "../../utils/getCategories";
 import type { IGetCategoriesResponse } from "../../utils/getCategories";
 import { parseHTML } from "../../utils/parseHTML";
 
-export const PostForm = () => {
-  const { control, watch } = useForm();
+interface IPostForm {
+  control: Control<any>
+}
+
+export const PostForm: React.FC<IPostForm> = ({ control }) => {
   const [categories, setCategories] = useState<IGetCategoriesResponse>({
     data: [],
     error: "",
   });
-
-  const formValues = watch();
 
   useEffect(() => {
     getCategories()
@@ -58,7 +59,6 @@ export const PostForm = () => {
           </FormControl>
         )}
       />
-      <p>{JSON.stringify(formValues)}</p>
     </div>
   );
 };
