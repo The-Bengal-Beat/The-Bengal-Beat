@@ -25,12 +25,8 @@ const PostTable: React.FC = () => {
 
   useEffect(() => {
     getPosts(page)
-      .then((data) => {
-        setData(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      .then((data) => setData(data))
+      .catch((err) => console.error(err));
   }, [page]);
 
   return (

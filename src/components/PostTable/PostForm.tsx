@@ -1,21 +1,26 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { getCategories, IGetCategoriesResponse } from "../../utils/getCategories";
+import { getCategories } from "../../utils/getCategories";
+import type { IGetCategoriesResponse } from "../../utils/getCategories";
 
 export const PostForm = () => {
   const { control, watch } = useForm();
-  const [categories, setCategories] = useState<IGetCategoriesResponse>({ data: [], error: "" });
+  const [categories, setCategories] = useState<IGetCategoriesResponse>({
+    data: [],
+    error: "",
+  });
 
   const formValues = watch();
 
   useEffect(() => {
     getCategories()
-      .then(data => setCategories(data))
-  }, [])
+      .then((data) => setCategories(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
-    <div className="py-4 px-2 w-full flex flex-row justify-start">
+    <div className="flex w-full flex-row justify-start py-4 px-2">
       <Controller
         name="writer"
         control={control}
@@ -38,8 +43,12 @@ export const PostForm = () => {
           <FormControl className="w-[200px]">
             <InputLabel id="category-input">Category</InputLabel>
             <Select labelId="category-input" label="Category" {...field}>
-              {categories.data.map(category => {
-                return <MenuItem value={category.name}>{category.name}</MenuItem>
+              {categories.data.map((category) => {
+                return (
+                  <MenuItem key={category.id} value={category.name}>
+                    {category.name}
+                  </MenuItem>
+                );
               })}
             </Select>
           </FormControl>
