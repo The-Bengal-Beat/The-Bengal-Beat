@@ -6,7 +6,7 @@ export type IGetPostsResponse = IApiOutput<IPost[]>
 export type IGetPostsProps = {
     page?: number;
     per_page?: number;
-    category?: string | string[];  
+    category?: string;  
 }
 
 export const getPosts = async ({page = 1, per_page = 10, category = ""}: IGetPostsProps): Promise<IGetPostsResponse> => {
