@@ -48,7 +48,7 @@ export const PostForm = () => {
                 return (
                   <MenuItem
                     key={category.id}
-                    value={category.name}
+                    value={parseHTML(category.name)}
                   >
                     {parseHTML(category.name)}
                   </MenuItem>
