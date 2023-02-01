@@ -10,7 +10,8 @@ export type IGetPostsProps = {
 }
 
 export const getPosts = async ({page = 1, per_page = 10, category = ""}: IGetPostsProps): Promise<IGetPostsResponse> => {
-    const url = `https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=${per_page}&page=${page}&categories=${category}`
+    const categories = category && `&categories=${category}`
+    const url = `https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=${per_page}&page=${page}${categories}`
     const response = await axios.get(url)
     
     // parsing
