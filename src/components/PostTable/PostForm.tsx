@@ -45,9 +45,11 @@ export const PostForm = () => {
             <Select labelId="category-input" label="Category" {...field}>
               {categories.data.map((category) => {
                 return (
-                  <MenuItem key={category.id} value={category.name}>
-                    {category.name}
-                  </MenuItem>
+                  <MenuItem
+                    key={category.id}
+                    value={category.name}
+                    dangerouslySetInnerHTML={{ __html: category.name }}
+                  />
                 );
               })}
             </Select>
