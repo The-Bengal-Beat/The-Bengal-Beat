@@ -6,11 +6,11 @@ export type IGetPostsResponse = IApiOutput<IPost[]>
 export type IGetPostsProps = {
     page?: number;
     per_page?: number;
-    category?: string;
+    category?: string | string[];  
 }
 
 export const getPosts = async ({page = 1, per_page = 10, category = ""}: IGetPostsProps): Promise<IGetPostsResponse> => {
-    const url = `https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=${per_page}&page=${page}&category=${category}`
+    const url = `https://thebengalbeat.com/wp-json/wp/v2/posts?per_page=${per_page}&page=${page}&categories=${category}`
     const response = await axios.get(url)
     
     // parsing
