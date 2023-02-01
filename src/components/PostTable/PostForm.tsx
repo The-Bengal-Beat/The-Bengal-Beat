@@ -49,7 +49,7 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
                 return (
                   <MenuItem
                     key={category.id}
-                    value={parseHTML(category.name)}
+                    value={parseHTML(category.slug)}
                   >
                     {parseHTML(category.name)}
                   </MenuItem>
