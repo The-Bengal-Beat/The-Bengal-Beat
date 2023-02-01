@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const StatusEnum = ["publish", "future", "draft", "pending", "private"] as const
-export const PostFromApiSchema = z.object({
+export const PostSchema = z.object({
     id: z.number(),
     date_gmt: z.string(),
     link: z.string(),
@@ -17,4 +17,11 @@ export const PostFromApiSchema = z.object({
         writer: z.array(z.string()).optional()
     })
 })
-export const PostArrayFromApiSchema = z.array(PostFromApiSchema)
+export const PostArraySchema = z.array(PostSchema)
+export const CategorySchema = z.object({
+    id: z.number(),
+    link: z.string(),
+    slug: z.string(),
+    name: z.string(),
+})
+export const CategoryArraySchema = z.array(CategorySchema)

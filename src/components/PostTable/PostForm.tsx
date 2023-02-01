@@ -1,9 +1,18 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { getCategories, IGetCategoriesResponse } from "../../utils/getCategories";
 
 export const PostForm = () => {
-  const { control } = useForm();
+  const { control, watch } = useForm();
+  const [categories, setCategories] = useState<IGetCategoriesResponse>({ data: [], error: "" });
+
+  const formValues = watch();
+
+  useEffect(() => {
+    getCategories()
+      .then(data => setCategories(data))
+  }, [])
 
   return (
     <div className="py-4 px-2 w-full flex flex-row justify-start">
@@ -29,13 +38,14 @@ export const PostForm = () => {
           <FormControl className="w-[200px]">
             <InputLabel id="category-input">Category</InputLabel>
             <Select labelId="category-input" label="Category" {...field}>
-              <MenuItem value="Category One">Category One</MenuItem>
-              <MenuItem value="Category Two">Category Two</MenuItem>
-              <MenuItem value="Category Three">Category Three</MenuItem>
+              {categories.data.map(category => {
+                return <MenuItem value={category.name}>{category.name}</MenuItem>
+              })}
             </Select>
           </FormControl>
         )}
       />
+      <p>{JSON.stringify(formValues)}</p>
     </div>
   );
 };
