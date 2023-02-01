@@ -20,7 +20,7 @@ const PostTable: React.FC = () => {
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
   const [page, setPage] = useState<number>(1);
 
-  const category = watch("category");
+  const category = watch("category") as string;
 
   const handlePageChange = (_: unknown, newPage: number) => {
     setPage(newPage);
