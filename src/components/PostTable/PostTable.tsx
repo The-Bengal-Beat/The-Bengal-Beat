@@ -17,10 +17,10 @@ import type { IGetPostsResponse } from "../../utils/getPosts";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
-  { field: "writer", headerName: "Writer", width: 70 },
-  { field: "title", headerName: "Title", width: 130 },
-  { field: "status", headerName: "Status", width: 130 },
-  { field: "datePublished", headerName: "Date Published", width: 130 },
+  { field: "writer", headerName: "Writer", flex: 2 },
+  { field: "title", headerName: "Title", flex: 3 },
+  { field: "status", headerName: "Status", flex: 2 },
+  { field: "datePublished", headerName: "Date Published", flex: 1 },
 ];
 
 const PostTable: React.FC = () => {
@@ -41,6 +41,7 @@ const PostTable: React.FC = () => {
           data.data.map((row) => ({
             id: row.id,
             writer: row.custom_fields.writer,
+            title: row.title.rendered,
             status: row.status,
             datePublished: row.date_gmt,
           }))
