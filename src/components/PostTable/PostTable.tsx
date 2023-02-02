@@ -51,7 +51,7 @@ const PostTable: React.FC = () => {
   }, [page, category]);
 
   return (
-    <Paper className="flex flex-col items-center">
+    <Paper className="flex flex-col items-center w-full h-full">
       <PostForm control={control} />
       <DataGrid columns={columns} rows={rows} pageSize={20} />
       {/* <TableContainer component={Paper}>
