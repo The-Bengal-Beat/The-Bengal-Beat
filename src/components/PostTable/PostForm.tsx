@@ -6,7 +6,7 @@ import type { IGetCategoriesResponse } from "../../utils/getCategories";
 import { parseHTML } from "../../utils/parseHTML";
 
 interface IPostForm {
-  control: Control<any>
+  control: Control<any>;
 }
 
 export const PostForm: React.FC<IPostForm> = ({ control }) => {
@@ -45,13 +45,10 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
           <FormControl className="w-[200px]">
             <InputLabel id="category-input">Category</InputLabel>
             <Select labelId="category-input" label="Category" {...field}>
+              <MenuItem value="">All</MenuItem>
               {categories.data.map((category) => {
-                <MenuItem value="">All</MenuItem>
                 return (
-                  <MenuItem
-                    key={category.id}
-                    value={category.id}
-                  >
+                  <MenuItem key={category.id} value={category.id}>
                     {parseHTML(category.name)}
                   </MenuItem>
                 );
