@@ -35,7 +35,6 @@ const PostTable: React.FC = () => {
   return (
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
-      <p>{JSON.stringify(category)}</p>
       <TableContainer component={Paper}>
         <Table aria-label="Post Table">
           <TableHead>
