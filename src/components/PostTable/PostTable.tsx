@@ -23,27 +23,11 @@ const columns: GridColDef[] = [
   { field: "datePublished", headerName: "Date Published", width: 130 },
 ];
 
-const rows = [
-  {
-    id: 1,
-    writer: "Noah Fuller",
-    title: "Article #1",
-    status: "publish",
-    datePublished: "12/31/23",
-  },
-  {
-    id: 2,
-    writer: "Noah Fuller",
-    title: "Article #2",
-    status: "publish",
-    datePublished: "12/31/23",
-  },
-];
-
 const PostTable: React.FC = () => {
   const { control, watch } = useForm();
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
   const [page, setPage] = useState<number>(1);
+  const [rows, setRows] = useState<any[]>([]);
 
   const category = watch("category") as string;
 
@@ -51,14 +35,24 @@ const PostTable: React.FC = () => {
 
   useEffect(() => {
     getPosts({ page, category })
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+        setRows(
+          data.data.map((row) => ({
+            id: row.id,
+            writer: row.custom_fields.writer,
+            status: row.status,
+            datePublished: row.date_gmt,
+          }))
+        );
+      })
       .catch((err) => console.error(err));
   }, [page, category]);
 
   return (
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
-      <div className="w-full h-[300px]">
+      <div className="h-[300px] w-full">
         <DataGrid columns={columns} rows={rows} pageSize={20} />
       </div>
       {/* <TableContainer component={Paper}>
