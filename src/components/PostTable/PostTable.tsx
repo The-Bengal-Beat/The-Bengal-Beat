@@ -31,7 +31,7 @@ const PostTable: React.FC = () => {
 
   const category = watch("category") as string;
 
-  const handlePageChange = (_: unknown, newPage: number) => setPage(newPage);
+  const handlePageChange = (page: number) => setPage(page);
 
   useEffect(() => {
     getPosts({ page, category })
@@ -54,7 +54,7 @@ const PostTable: React.FC = () => {
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
       <div className="h-[300px] w-full">
-        <DataGrid columns={columns} rows={rows} pageSize={20} />
+        <DataGrid columns={columns} rows={rows} pageSize={10} rowCount={Number(data.headers?.["x-wp-totalpages"])} onPageChange={handlePageChange} />
       </div>
       {/* <TableContainer component={Paper}>
         <Table aria-label="Post Table">
@@ -73,14 +73,6 @@ const PostTable: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer> */}
-      <Pagination
-        variant="outlined"
-        color="primary"
-        count={Number(data.headers?.["x-wp-totalpages"])}
-        page={page}
-        onChange={handlePageChange}
-        className="my-4"
-      />
     </Paper>
   );
 };
