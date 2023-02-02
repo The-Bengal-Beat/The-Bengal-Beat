@@ -44,7 +44,7 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
         render={({ field }) => (
           <FormControl className="w-[200px]">
             <InputLabel id="category-input">Category</InputLabel>
-            <Select labelId="category-input" label="Category" {...field}>
+            <Select labelId="category-input" label="Category" {...field} displayEmpty>
               <MenuItem value="">All</MenuItem>
               {categories.data.map((category) => {
                 return (
