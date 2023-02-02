@@ -62,6 +62,7 @@ const PostTable: React.FC = () => {
           rowCount={Number(data.headers?.["x-wp-totalpages"])}
           onPageChange={handlePageChange}
           pagination
+          paginationMode="server"
         />
       </div>
       {/* <TableContainer component={Paper}>
