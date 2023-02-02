@@ -54,7 +54,14 @@ const PostTable: React.FC = () => {
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
       <div className="h-[300px] w-full">
-        <DataGrid columns={columns} rows={rows} pageSize={10} rowCount={Number(data.headers?.["x-wp-totalpages"])} onPageChange={handlePageChange} />
+        <DataGrid
+          columns={columns}
+          rows={rows}
+          page={page}
+          pageSize={10}
+          rowCount={Number(data.headers?.["x-wp-totalpages"])}
+          onPageChange={handlePageChange}
+        />
       </div>
       {/* <TableContainer component={Paper}>
         <Table aria-label="Post Table">
