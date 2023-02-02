@@ -40,9 +40,7 @@ const PostTable: React.FC = () => {
 
   const category = watch("category") as string;
 
-  const handlePageChange = (_: unknown, newPage: number) => {
-    setPage(newPage);
-  };
+  const handlePageChange = (_: unknown, newPage: number) => setPage(newPage);
 
   useEffect(() => {
     getPosts({ page, category })
@@ -51,9 +49,11 @@ const PostTable: React.FC = () => {
   }, [page, category]);
 
   return (
-    <Paper className="flex flex-col items-center w-full h-full">
+    <Paper className="flex flex-col items-center">
       <PostForm control={control} />
-      <DataGrid columns={columns} rows={rows} pageSize={20} />
+      <div className="w-full">
+        <DataGrid columns={columns} rows={rows} pageSize={20} />
+      </div>
       {/* <TableContainer component={Paper}>
         <Table aria-label="Post Table">
           <TableHead>
