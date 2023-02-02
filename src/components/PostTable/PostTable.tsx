@@ -31,6 +31,13 @@ const rows = [
     status: "publish",
     datePublished: "12/31/23",
   },
+  {
+    id: 2,
+    writer: "Noah Fuller",
+    title: "Article #2",
+    status: "publish",
+    datePublished: "12/31/23",
+  },
 ];
 
 const PostTable: React.FC = () => {
@@ -51,7 +58,7 @@ const PostTable: React.FC = () => {
   return (
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
-      <div className="w-full">
+      <div className="w-full h-[300px]">
         <DataGrid columns={columns} rows={rows} pageSize={20} />
       </div>
       {/* <TableContainer component={Paper}>
