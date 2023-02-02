@@ -6,7 +6,7 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Pagination,
+  Pagination
 } from "@mui/material";
 import { getPosts } from "../../utils/getPosts";
 import React, { useEffect, useState } from "react";
@@ -14,6 +14,18 @@ import PostTableRow from "./PostTableRow";
 import { PostForm } from "./PostForm";
 import { useForm } from "react-hook-form";
 import type { IGetPostsResponse } from "../../utils/getPosts";
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+
+const columns: GridColDef[] = [
+  { field: 'writer', headerName: 'Writer', width: 70 },
+  { field: 'title', headerName: 'Title', width: 130 },
+  { field: 'status', headerName: 'Status', width: 130 },
+  { field: 'datePublished', headerName: 'Date Published', width: 130 },
+];
+
+const rows = [
+  {writer: "Noah Fuller", title: "Article #1", status: "publish", datePublished: "12/31/23"}
+]
 
 const PostTable: React.FC = () => {
   const { control, watch } = useForm()
@@ -35,7 +47,12 @@ const PostTable: React.FC = () => {
   return (
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
-      <TableContainer component={Paper}>
+      <DataGrid 
+        columns={columns}
+        rows={rows}
+        pageSize={20}
+      />
+      {/* <TableContainer component={Paper}>
         <Table aria-label="Post Table">
           <TableHead>
             <TableRow>
@@ -51,7 +68,7 @@ const PostTable: React.FC = () => {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
       <Pagination
         variant="outlined"
         color="primary"
