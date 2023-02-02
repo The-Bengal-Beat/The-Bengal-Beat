@@ -43,7 +43,7 @@ const PostTable: React.FC = () => {
             writer: row.custom_fields.writer,
             title: row.title.rendered,
             status: row.status,
-            datePublished: row.date_gmt,
+            datePublished: new Date(row.date_gmt).toDateString(),
           }))
         );
       })
