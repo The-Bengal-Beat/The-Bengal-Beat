@@ -53,7 +53,7 @@ const PostTable: React.FC = () => {
   return (
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
-      <div className="h-[500px] w-full px-2">
+      <div className="grow w-full px-2">
         <DataGrid 
           columns={columns} 
           rows={rows} 
