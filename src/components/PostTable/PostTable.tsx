@@ -54,25 +54,13 @@ const PostTable: React.FC = () => {
     <Paper className="flex flex-col items-center">
       <PostForm control={control} />
       <div className="h-[500px] w-full px-2">
-        <DataGrid columns={columns} rows={rows} pageSize={20} />
+        <DataGrid 
+          columns={columns} 
+          rows={rows} 
+          pageSize={20} 
+          hideFooter
+        />
       </div>
-      {/* <TableContainer component={Paper}>
-        <Table aria-label="Post Table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Writer</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Status</TableCell>
-              <TableCell>Date Published</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.data?.map((post) => (
-              <PostTableRow key={post.id} {...post} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer> */}
       <Pagination
         variant="outlined"
         color="primary"
