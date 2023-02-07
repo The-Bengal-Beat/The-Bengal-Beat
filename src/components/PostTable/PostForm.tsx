@@ -1,4 +1,10 @@
-import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
 import type { Control } from "react-hook-form";
@@ -28,7 +34,12 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
         name="search"
         control={control}
         render={({ field }) => (
-          <TextField label="Search" variant="outlined" {...field} />
+          <TextField
+            className="w-full"
+            label="Search"
+            variant="outlined"
+            {...field}
+          />
         )}
       />
       <div className="w-2" />
