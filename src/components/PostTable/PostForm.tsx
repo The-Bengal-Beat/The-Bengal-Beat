@@ -1,6 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Controller, Control } from "react-hook-form";
+import { Controller } from "react-hook-form";
+import type { Control } from "react-hook-form";
 import { getCategories } from "../../utils/getCategories";
 import type { IGetCategoriesResponse } from "../../utils/getCategories";
 import { parseHTML } from "../../utils/parseHTML";

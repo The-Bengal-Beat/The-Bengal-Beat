@@ -1,20 +1,11 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Pagination,
-} from "@mui/material";
+import { Paper, Pagination } from "@mui/material";
 import { getPosts } from "../../utils/getPosts";
 import React, { useEffect, useState } from "react";
-import PostTableRow from "./PostTableRow";
 import { PostForm } from "./PostForm";
 import { useForm } from "react-hook-form";
 import type { IGetPostsResponse } from "../../utils/getPosts";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
+import type { GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
   { field: "writer", headerName: "Writer", flex: 2 },
@@ -53,7 +44,7 @@ const PostTable: React.FC = () => {
   return (
     <Paper className="flex h-full w-full flex-col items-center">
       <PostForm control={control} />
-      <div className="w-full h-[500px] px-2">
+      <div className="h-[500px] w-full px-2">
         <DataGrid columns={columns} rows={rows} hideFooter />
       </div>
       <Pagination
