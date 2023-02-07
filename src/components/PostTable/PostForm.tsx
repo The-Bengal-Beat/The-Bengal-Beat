@@ -6,17 +6,14 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import type { Control } from "react-hook-form";
 import { getCategories } from "../../utils/getCategories";
 import type { IGetCategoriesResponse } from "../../utils/getCategories";
 import { parseHTML } from "../../utils/parseHTML";
 
-interface IPostForm {
-  control: Control<any>;
-}
-
-export const PostForm: React.FC<IPostForm> = ({ control }) => {
+export const PostForm: React.FC = () => {
+  const { control } = useFormContext();
   const [categories, setCategories] = useState<IGetCategoriesResponse>({
     data: [],
     error: "",

@@ -2,7 +2,7 @@ import { Paper, Pagination } from "@mui/material";
 import { getPosts } from "../../utils/getPosts";
 import React, { useEffect, useState } from "react";
 import { PostForm } from "./PostForm";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import type { IGetPostsResponse } from "../../utils/getPosts";
 import { DataGrid } from "@mui/x-data-grid";
 import type { GridColDef } from "@mui/x-data-grid";
@@ -15,13 +15,13 @@ const columns: GridColDef[] = [
 ];
 
 const PostTable: React.FC = () => {
-  const { control, watch } = useForm();
+  const methods = useForm();
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
   const [page, setPage] = useState<number>(1);
   const [rows, setRows] = useState<any[]>([]);
 
-  const category = watch("category") as string;
-  const search = watch("search") as string;
+  const category = methods.watch("category") as string;
+  const search = methods.watch("search") as string;
 
   const handlePageChange = (_: unknown, newPage: number) => setPage(newPage);
 
@@ -44,7 +44,9 @@ const PostTable: React.FC = () => {
 
   return (
     <Paper className="flex h-full w-full flex-col items-center">
-      <PostForm control={control} />
+      <FormProvider {...methods}>
+        <PostForm />
+      </FormProvider>
       <div className="h-[500px] w-full px-2">
         <DataGrid columns={columns} rows={rows} hideFooter />
       </div>
