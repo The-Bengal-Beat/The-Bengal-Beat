@@ -44,8 +44,8 @@ const PostTable: React.FC = () => {
 
   return (
     <Paper className="flex h-full w-full flex-col items-center">
-      <FormProvider>
-      <PostForm control={control} />
+      <FormProvider {...methods}>
+        <PostForm />
       </FormProvider>
       <div className="h-[500px] w-full px-2">
         <DataGrid columns={columns} rows={rows} hideFooter />
