@@ -47,7 +47,7 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
         name="writer"
         control={control}
         render={({ field }) => (
-          <FormControl className="w-[200px]">
+          <FormControl className="min-w-[300px]">
             <InputLabel id="writer-input-label">Writer</InputLabel>
             <Select labelId="writer-input-label" label="Writer" {...field}>
               <MenuItem value="Writer One">Writer One</MenuItem>
@@ -62,7 +62,7 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
         name="category"
         control={control}
         render={({ field }) => (
-          <FormControl className="w-[200px]">
+          <FormControl className="min-w-[300px]">
             <InputLabel id="category-input-label">Category</InputLabel>
             <Select
               labelId="category-input-label"
