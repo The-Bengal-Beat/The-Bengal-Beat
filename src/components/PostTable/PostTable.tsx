@@ -51,15 +51,10 @@ const PostTable: React.FC = () => {
   }, [page, category]);
 
   return (
-    <Paper className="flex flex-col items-center">
+    <Paper className="flex h-full w-full flex-col items-center">
       <PostForm control={control} />
-      <div className="grow w-full px-2">
-        <DataGrid 
-          columns={columns} 
-          rows={rows} 
-          pageSize={20} 
-          hideFooter
-        />
+      <div className="w-full h-[500px] px-2">
+        <DataGrid columns={columns} rows={rows} hideFooter />
       </div>
       <Pagination
         variant="outlined"
