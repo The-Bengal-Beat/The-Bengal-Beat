@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller } from "react-hook-form";
 import type { Control } from "react-hook-form";
@@ -25,12 +25,20 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
   return (
     <div className="flex w-full flex-row justify-start py-4 px-2">
       <Controller
+        name="search"
+        control={control}
+        render={({ field }) => (
+          <TextField label="Search" variant="outlined" {...field} />
+        )}
+      />
+      <div className="w-2" />
+      <Controller
         name="writer"
         control={control}
         render={({ field }) => (
           <FormControl className="w-[200px]">
-            <InputLabel id="writer-input">Writer</InputLabel>
-            <Select labelId="writer-input" label="Writer" {...field}>
+            <InputLabel id="writer-input-label">Writer</InputLabel>
+            <Select labelId="writer-input-label" label="Writer" {...field}>
               <MenuItem value="Writer One">Writer One</MenuItem>
               <MenuItem value="Writer Two">Writer Two</MenuItem>
               <MenuItem value="Writer Three">Writer Three</MenuItem>
@@ -44,8 +52,13 @@ export const PostForm: React.FC<IPostForm> = ({ control }) => {
         control={control}
         render={({ field }) => (
           <FormControl className="w-[200px]">
-            <InputLabel id="category-input">Category</InputLabel>
-            <Select labelId="category-input" label="Category" {...field} displayEmpty>
+            <InputLabel id="category-input-label">Category</InputLabel>
+            <Select
+              labelId="category-input-label"
+              label="Category"
+              {...field}
+              displayEmpty
+            >
               <MenuItem value="">All</MenuItem>
               {categories.data.map((category) => {
                 return (

@@ -21,11 +21,12 @@ const PostTable: React.FC = () => {
   const [rows, setRows] = useState<any[]>([]);
 
   const category = watch("category") as string;
+  const search = watch("search") as string;
 
   const handlePageChange = (_: unknown, newPage: number) => setPage(newPage);
 
   useEffect(() => {
-    getPosts({ page, category })
+    getPosts({ page, category, search })
       .then((data) => {
         setData(data);
         setRows(
@@ -39,7 +40,7 @@ const PostTable: React.FC = () => {
         );
       })
       .catch((err) => console.error(err));
-  }, [page, category]);
+  }, [page, category, search]);
 
   return (
     <Paper className="flex h-full w-full flex-col items-center">
