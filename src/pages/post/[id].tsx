@@ -20,7 +20,7 @@ const Post: NextPage = () => {
 
   return (
     <div className="h-full w-full p-16">
-      {parseHTML(post?.data.title.rendered ?? "")}
+      {post?.data.title.rendered ?? ""}
     </div>
   );
 };
