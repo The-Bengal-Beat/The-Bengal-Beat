@@ -4,14 +4,22 @@ import React, { useEffect, useState } from "react";
 import { PostForm } from "./PostForm";
 import { FormProvider, useForm } from "react-hook-form";
 import type { IGetPostsResponse } from "../../utils/getPosts";
-import { DataGrid } from "@mui/x-data-grid";
-import type { GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem, GridRowParams } from "@mui/x-data-grid";
+import { Router } from "next/router";
 
-const columns: GridColDef[] = [
+const columns = [
   { field: "writer", headerName: "Writer", flex: 2 },
   { field: "title", headerName: "Title", flex: 3 },
   { field: "status", headerName: "Status", flex: 2 },
   { field: "datePublished", headerName: "Date Published", flex: 1 },
+  {
+    field: 'actions',
+    type: 'actions',
+    getActions: (params: GridRowParams) => [
+      <GridActionsCellItem onClick={() => window.location.replace("/post/" + params.id)} label="Edit" showInMenu />,
+      <GridActionsCellItem onClick={() => console.log("Hello")} label="Delete" showInMenu />,
+    ]
+  }
 ];
 
 const PostTable: React.FC = () => {
@@ -48,7 +56,7 @@ const PostTable: React.FC = () => {
         <PostForm />
       </FormProvider>
       <div className="h-[500px] w-full px-2">
-        <DataGrid columns={columns} rows={rows} hideFooter />
+        <DataGrid columns={columns} rows={rows} hideFooter disableColumnMenu />
       </div>
       <Pagination
         variant="outlined"

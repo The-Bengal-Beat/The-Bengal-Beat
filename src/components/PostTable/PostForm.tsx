@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import type { Control } from "react-hook-form";
 import { getCategories } from "../../utils/getCategories";
 import type { IGetCategoriesResponse } from "../../utils/getCategories";
 import { parseHTML } from "../../utils/parseHTML";
