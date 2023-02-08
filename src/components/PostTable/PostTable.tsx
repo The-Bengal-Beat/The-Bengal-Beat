@@ -5,7 +5,6 @@ import { PostForm } from "./PostForm";
 import { FormProvider, useForm } from "react-hook-form";
 import type { IGetPostsResponse } from "../../utils/getPosts";
 import { DataGrid, GridActionsCellItem, GridRowParams } from "@mui/x-data-grid";
-import { Router } from "next/router";
 
 const columns = [
   { field: "writer", headerName: "Writer", flex: 2 },
@@ -16,8 +15,8 @@ const columns = [
     field: 'actions',
     type: 'actions',
     getActions: (params: GridRowParams) => [
-      <GridActionsCellItem onClick={() => window.location.replace("/post/" + params.id)} label="Edit" showInMenu />,
-      <GridActionsCellItem onClick={() => console.log("Hello")} label="Delete" showInMenu />,
+      <GridActionsCellItem onClick={() => window.location.replace("/post/" + params.id)} label="Edit" key={params.id} showInMenu />,
+      <GridActionsCellItem onClick={() => console.log("Hello")} label="Delete" key={params.id} showInMenu />,
     ]
   }
 ];
