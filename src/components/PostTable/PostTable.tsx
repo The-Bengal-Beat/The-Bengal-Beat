@@ -7,8 +7,6 @@ import type { IGetPostsResponse } from "../../utils/getPosts";
 import { DataGrid, GridActionsCellItem, GridRowParams } from "@mui/x-data-grid";
 import { useRouter } from "next/router";
 
-
-
 const PostTable: React.FC = () => {
   const methods = useForm();
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
@@ -22,13 +20,28 @@ const PostTable: React.FC = () => {
     { field: "status", headerName: "Status", flex: 2 },
     { field: "datePublished", headerName: "Date Published", flex: 1 },
     {
-      field: 'actions',
-      type: 'actions',
+      field: "actions",
+      type: "actions",
       getActions: (params: GridRowParams) => [
-        <GridActionsCellItem onClick={() => router.push(`/post/${params.id}`)} label="Edit" key={params.id} showInMenu />,
-        <GridActionsCellItem onClick={() => console.log("Hello")} label="Delete" key={params.id} showInMenu />,
-      ]
-    }
+        <GridActionsCellItem
+          onClick={() => {
+            router
+              .push(`/post/${params.id}`)
+              .then()
+              .catch((err) => console.error(err));
+          }}
+          label="Edit"
+          key={params.id}
+          showInMenu
+        />,
+        <GridActionsCellItem
+          onClick={() => console.log("Hello")}
+          label="Delete"
+          key={params.id}
+          showInMenu
+        />,
+      ],
+    },
   ];
 
   const category = methods.watch("category") as string;
