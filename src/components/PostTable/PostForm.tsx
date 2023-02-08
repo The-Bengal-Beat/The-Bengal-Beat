@@ -7,10 +7,9 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import type { Control } from "react-hook-form";
 import { getCategories } from "../../utils/getCategories";
 import type { IGetCategoriesResponse } from "../../utils/getCategories";
-import { parseHTML } from "../../utils/parseHTML";
+import ReactHtmlParser from "react-html-parser";
 
 export const PostForm: React.FC = () => {
   const { control } = useFormContext();
@@ -71,7 +70,7 @@ export const PostForm: React.FC = () => {
               {categories.data.map((category) => {
                 return (
                   <MenuItem key={category.id} value={category.id}>
-                    {parseHTML(category.name)}
+                    {ReactHtmlParser(category.name)}
                   </MenuItem>
                 );
               })}
