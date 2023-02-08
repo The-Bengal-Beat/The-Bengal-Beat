@@ -3,7 +3,7 @@ import PostTable from "../components/PostTable/PostTable";
 
 const Home: NextPage = () => {
   return (
-    <div className="p-16 h-full w-full">
+    <div className="h-full w-full">
       <PostTable />
     </div>
   )

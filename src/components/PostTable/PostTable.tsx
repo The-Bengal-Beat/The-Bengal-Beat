@@ -5,27 +5,31 @@ import { PostForm } from "./PostForm";
 import { FormProvider, useForm } from "react-hook-form";
 import type { IGetPostsResponse } from "../../utils/getPosts";
 import { DataGrid, GridActionsCellItem, GridRowParams } from "@mui/x-data-grid";
+import { useRouter } from "next/router";
 
-const columns = [
-  { field: "writer", headerName: "Writer", flex: 2 },
-  { field: "title", headerName: "Title", flex: 3 },
-  { field: "status", headerName: "Status", flex: 2 },
-  { field: "datePublished", headerName: "Date Published", flex: 1 },
-  {
-    field: 'actions',
-    type: 'actions',
-    getActions: (params: GridRowParams) => [
-      <GridActionsCellItem onClick={() => window.location.replace(`/post/${params.id}`)} label="Edit" key={params.id} showInMenu />,
-      <GridActionsCellItem onClick={() => console.log("Hello")} label="Delete" key={params.id} showInMenu />,
-    ]
-  }
-];
+
 
 const PostTable: React.FC = () => {
   const methods = useForm();
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
   const [page, setPage] = useState<number>(1);
   const [rows, setRows] = useState<any[]>([]);
+  const router = useRouter();
+
+  const columns = [
+    { field: "writer", headerName: "Writer", flex: 2 },
+    { field: "title", headerName: "Title", flex: 3 },
+    { field: "status", headerName: "Status", flex: 2 },
+    { field: "datePublished", headerName: "Date Published", flex: 1 },
+    {
+      field: 'actions',
+      type: 'actions',
+      getActions: (params: GridRowParams) => [
+        <GridActionsCellItem onClick={() => router.push(`/post/${params.id}`)} label="Edit" key={params.id} showInMenu />,
+        <GridActionsCellItem onClick={() => console.log("Hello")} label="Delete" key={params.id} showInMenu />,
+      ]
+    }
+  ];
 
   const category = methods.watch("category") as string;
   const search = methods.watch("search") as string;
