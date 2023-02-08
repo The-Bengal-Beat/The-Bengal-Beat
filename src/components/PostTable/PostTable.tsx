@@ -15,7 +15,7 @@ const columns = [
     field: 'actions',
     type: 'actions',
     getActions: (params: GridRowParams) => [
-      <GridActionsCellItem onClick={() => window.location.replace("/post/" + params.id)} label="Edit" key={params.id} showInMenu />,
+      <GridActionsCellItem onClick={() => window.location.replace(`/post/${params.id}`)} label="Edit" key={params.id} showInMenu />,
       <GridActionsCellItem onClick={() => console.log("Hello")} label="Delete" key={params.id} showInMenu />,
     ]
   }
