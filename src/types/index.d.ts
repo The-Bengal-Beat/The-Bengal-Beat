@@ -1,7 +1,7 @@
 import type { AxiosResponseHeaders } from "axios";
 import type { Dispatch, SetStateAction } from "react";
 import type { z } from "zod";
-import type { PostSchema, CategorySchema } from "../schemas";
+import type { PostSchema, CategorySchema } from "../schema";
 
 export type State<T> = [T, Dispatch<SetStateAction<T>>]
 export type IPost = z.infer<typeof PostSchema>

@@ -1,9 +1,9 @@
 import { TableCell, TableRow } from "@mui/material";
-import type { IPost } from "../../types";
+import type { IPost } from "../types";
 import React from "react";
 import ReactHtmlParser from "react-html-parser"
 
-const PostTableRow: React.FC<IPost> = ({ ...post }) => {
+const Post: React.FC<IPost> = ({ ...post }) => {
   const date = new Date(post.date_gmt);
 
   return (
@@ -16,4 +16,4 @@ const PostTableRow: React.FC<IPost> = ({ ...post }) => {
   );
 };
 
-export default PostTableRow;
+export default Post;

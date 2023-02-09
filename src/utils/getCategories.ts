@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CategoryArraySchema } from "../schemas";
+import { CategoryArraySchema } from "../schema";
 import type { IApiOutput, ICategory } from "../types";
 
 export type IGetCategoriesResponse = IApiOutput<ICategory[]>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PostArraySchema } from "../schemas";
+import { PostArraySchema } from "../schema";
 import type { IApiOutput, IPost } from "../types";
 
 export type IGetPostsResponse = IApiOutput<IPost[]>
