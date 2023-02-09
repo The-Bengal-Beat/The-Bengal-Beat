@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
-import PostTable from "../components/PostTable/PostTable";
+import Posts from "../components/Posts";
 
 const Home: NextPage = () => {
   return (
     <div className="h-full w-full">
-      <PostTable />
+      <Posts />
     </div>
-  )
+  );
 };
 
 export default Home;

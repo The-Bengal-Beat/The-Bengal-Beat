@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getPost, IGetPostResponse } from "../../utils/getPost";
-import ReactHtmlParser from "react-html-parser"
+import ReactHtmlParser from "react-html-parser";
 
 const Post: NextPage = () => {
   const router = useRouter();
@@ -11,11 +11,10 @@ const Post: NextPage = () => {
   const [post, setPost] = useState<IGetPostResponse>();
 
   useEffect(() => {
-    if (typeof id === "string") {
-      getPost(id)
-        .then((data) => setPost(data))
-        .catch((err) => console.error(err));
-    }
+    if (!(typeof id === "string")) return;
+    getPost(id)
+      .then((data) => setPost(data))
+      .catch((err) => console.error(err));
   }, [id]);
 
   return (

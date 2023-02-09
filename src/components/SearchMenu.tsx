@@ -7,16 +7,13 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import { getCategories } from "../../utils/getCategories";
-import type { IGetCategoriesResponse } from "../../utils/getCategories";
+import { getCategories } from "../utils/getCategories";
+import type { IGetCategoriesResponse } from "../utils/getCategories";
 import ReactHtmlParser from "react-html-parser";
 
-export const PostForm: React.FC = () => {
+export const SearchMenu: React.FC = () => {
   const { control } = useFormContext();
-  const [categories, setCategories] = useState<IGetCategoriesResponse>({
-    data: [],
-    error: "",
-  });
+  const [categories, setCategories] = useState<IGetCategoriesResponse>();
 
   useEffect(() => {
     getCategories()
@@ -67,7 +64,7 @@ export const PostForm: React.FC = () => {
               displayEmpty
             >
               <MenuItem value="">All</MenuItem>
-              {categories.data.map((category) => {
+              {categories?.data.map((category) => {
                 return (
                   <MenuItem key={category.id} value={category.id}>
                     {ReactHtmlParser(category.name)}

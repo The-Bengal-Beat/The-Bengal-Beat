@@ -1,17 +1,18 @@
 import { Paper, Pagination } from "@mui/material";
-import { getPosts } from "../../utils/getPosts";
+import { getPosts } from "../utils/getPosts";
 import React, { useEffect, useState } from "react";
-import { PostForm } from "./PostForm";
+import { SearchMenu } from "./SearchMenu";
 import { FormProvider, useForm } from "react-hook-form";
-import type { IGetPostsResponse } from "../../utils/getPosts";
+import type { IGetPostsResponse } from "../utils/getPosts";
 import { DataGrid, GridActionsCellItem, GridRowParams } from "@mui/x-data-grid";
 import { useRouter } from "next/router";
 
-const PostTable: React.FC = () => {
+const Posts: React.FC = () => {
   const methods = useForm();
+  const [category, search] = methods.watch(["category", "search"]) as string[];
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
   const [page, setPage] = useState<number>(1);
-  const [rows, setRows] = useState<any[]>([]);
+  const [posts, setPosts] = useState<any[]>([]);
   const router = useRouter();
 
   const columns = [
@@ -44,24 +45,20 @@ const PostTable: React.FC = () => {
     },
   ];
 
-  const category = methods.watch("category") as string;
-  const search = methods.watch("search") as string;
-
-  const handlePageChange = (_: unknown, newPage: number) => setPage(newPage);
 
   useEffect(() => {
     getPosts({ page, category, search })
       .then((data) => {
+        const newPosts = data.data.map((row) => ({
+          id: row.id,
+          writer: row.custom_fields.writer,
+          title: row.title.rendered,
+          status: row.status,
+          datePublished: new Date(row.date_gmt).toDateString(),
+        }))
+
         setData(data);
-        setRows(
-          data.data.map((row) => ({
-            id: row.id,
-            writer: row.custom_fields.writer,
-            title: row.title.rendered,
-            status: row.status,
-            datePublished: new Date(row.date_gmt).toDateString(),
-          }))
-        );
+        setPosts(newPosts);
       })
       .catch((err) => console.error(err));
   }, [page, category, search]);
@@ -69,21 +66,21 @@ const PostTable: React.FC = () => {
   return (
     <Paper className="flex h-full w-full flex-col items-center">
       <FormProvider {...methods}>
-        <PostForm />
+        <SearchMenu />
       </FormProvider>
       <div className="h-[500px] w-full px-2">
-        <DataGrid columns={columns} rows={rows} hideFooter disableColumnMenu />
+        <DataGrid columns={columns} rows={posts} hideFooter disableColumnMenu />
       </div>
       <Pagination
-        variant="outlined"
+        variant="text"
         color="primary"
         count={Number(data.headers?.["x-wp-totalpages"])}
         page={page}
-        onChange={handlePageChange}
+        onChange={(_: unknown, newPage: number) => setPage(newPage)}
         className="my-4"
       />
     </Paper>
   );
 };
 
-export default PostTable;
+export default Posts;
