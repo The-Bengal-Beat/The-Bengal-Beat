@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getPost, IGetPostResponse } from "../../utils/getPost";
 import ReactHtmlParser from "react-html-parser";
+import { getAuthed } from "../../utils/getAuthed";
 
 const Post: NextPage = () => {
   const router = useRouter();
@@ -23,5 +24,7 @@ const Post: NextPage = () => {
     </div>
   );
 };
+
+export const getServerSideProps = getAuthed;
 
 export default Post;

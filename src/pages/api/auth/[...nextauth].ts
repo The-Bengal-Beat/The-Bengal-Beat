@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export default NextAuth({
   pages: {
     signIn: "/auth/sign-in",
+    newUser: "/about"
   },
   providers: [
     CredentialsProvider({
@@ -12,7 +13,7 @@ export default NextAuth({
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials, req) {
+      authorize(credentials) {
         if (!credentials) return null;
 
         const { username, password } = credentials;

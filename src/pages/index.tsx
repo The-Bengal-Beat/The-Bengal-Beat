@@ -1,16 +1,15 @@
 import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
-import Posts from "../components/Posts";
+import Page from "../components/Layout/Page";
+import { getAuthed } from "../utils/getAuthed";
 
 const Home: NextPage = () => {
-  const { data } = useSession();
-  
   return (
-    <div className="h-full w-full">
-      <p>Session: {data?.user?.name}</p>
-      <Posts />
-    </div>
+    <Page>
+      Hello - Content
+    </Page>
   );
 };
+
+export const getServerSideProps = getAuthed;
 
 export default Home;

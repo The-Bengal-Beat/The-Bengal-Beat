@@ -7,7 +7,7 @@ import type { IGetPostsResponse } from "../utils/getPosts";
 import { DataGrid, GridActionsCellItem, GridRowParams } from "@mui/x-data-grid";
 import { useRouter } from "next/router";
 
-const Posts: React.FC = () => {
+const PostTable: React.FC = () => {
   const methods = useForm();
   const [category, search] = methods.watch(["category", "search"]) as string[];
   const [data, setData] = useState<IGetPostsResponse>({ data: [], error: "" });
@@ -83,4 +83,4 @@ const Posts: React.FC = () => {
   );
 };
 
-export default Posts;
+export default PostTable;

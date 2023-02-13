@@ -13,6 +13,9 @@
     "path": false,
     "os": false
   },
+  "pre-commit": [
+    "build"
+  ],
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -42,6 +45,7 @@
     "eslint": "^8.30.0",
     "eslint-config-next": "13.1.1",
     "postcss": "^8.4.14",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.2.1",
     "prisma": "^4.8.1",
