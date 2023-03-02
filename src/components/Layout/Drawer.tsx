@@ -1,23 +1,27 @@
 import { Divider, Drawer, IconButton } from '@mui/material'
-import ChevronRightIcon from "@mui/material/Icon"
-import React, { useState } from 'react'
+import Link from 'next/link';
+import React, { Dispatch, SetStateAction } from 'react'
+import { ChevronLeft } from '@mui/icons-material';
 
-const Drawer2 = () => {
-  const [open, setOpen] = useState(true);
+interface IProps {
+  drawerOpen: boolean;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>
+}
 
+const Drawer2: React.FC<IProps> = ({ drawerOpen, setDrawerOpen }) => {
   return (
     <Drawer
       anchor="left"
       variant="persistent"
-      open={open}
+      open={drawerOpen}
     >
-      <div className="w-full h-[64px] flex justify-end">
-        <IconButton color="inherit" onClick={() => setOpen(!open)}>
-          <ChevronRightIcon color="inherit" />
+      <div className="w-[300px] h-[64px] flex justify-end">
+        <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
+          <ChevronLeft className="fill-white"/>
         </IconButton>
       </div>
       <Divider />
-      <div className="w-[300px]">Hello</div>
+      <Link className="m-2 text-base" href="/posts">Posts</Link>
     </Drawer>
   )
 }

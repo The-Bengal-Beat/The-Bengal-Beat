@@ -2,14 +2,13 @@ import { NextPage } from 'next'
 import { getAuthed } from '../utils/getAuthed';
 import PostTable from "../components/PostTable"
 import React from 'react'
-import Header from '../components/Layout/Header';
+import Page from '../components/Layout/Page';
 
 const Posts: NextPage = () => {
   return (
-    <div className="h-full w-full">
-      <Header />
+    <Page>
       <PostTable />
-    </div>
+    </Page>
   )
 }
 
