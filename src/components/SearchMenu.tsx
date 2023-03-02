@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { getCategories } from "../utils/getCategories";
 import type { IGetCategoriesResponse } from "../utils/getCategories";
-import ReactHtmlParser from "react-html-parser";
+import parser from "html-react-parser";
 
 export const SearchMenu: React.FC = () => {
   const { control } = useFormContext();
@@ -67,7 +67,7 @@ export const SearchMenu: React.FC = () => {
               {categories?.data.map((category) => {
                 return (
                   <MenuItem key={category.id} value={category.id}>
-                    {ReactHtmlParser(category.name)}
+                    {parser(category.name)}
                   </MenuItem>
                 );
               })}

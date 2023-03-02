@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getPost, IGetPostResponse } from "../../utils/getPost";
-import ReactHtmlParser from "react-html-parser";
+import parser from "html-react-parser";
 import { getAuthed } from "../../utils/getAuthed";
 
 const Post: NextPage = () => {
@@ -20,7 +20,7 @@ const Post: NextPage = () => {
 
   return (
     <div className="h-full w-full">
-      {ReactHtmlParser(post?.data.title.rendered ?? "")}
+      {parser(post?.data.title.rendered ?? "")}
     </div>
   );
 };
