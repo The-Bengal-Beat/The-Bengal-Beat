@@ -17,7 +17,7 @@ const Drawer2: React.FC<IProps> = ({ drawerOpen, setDrawerOpen }) => {
     >
       <div className="w-[300px] h-[64px] flex justify-end">
         <IconButton onClick={() => setDrawerOpen(!drawerOpen)}>
-          <ChevronLeft className="fill-white"/>
+          <ChevronLeft className="fill-white h-full aspect-square"/>
         </IconButton>
       </div>
       <Divider />
